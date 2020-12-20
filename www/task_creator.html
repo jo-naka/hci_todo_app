@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task_creator</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+    <style>
+        .main-container {
+            margin: 50pt auto auto;
+            width: 80vw;
+            position: relative
+        }
+        .input {
+            margin: 10px;
+            display: flex;
+        }
+        .input-taskname {
+            width: 100%;
+        }
+        .input-date {
+            margin: 0px 5px;
+            width: 100%;
+        }
+        .choose-template {
+            text-align: right;
+        }
+        .save-template {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .button-time {
+            display: flex;
+            justify-content: space-between;
+        }
+        .button-apply {
+            display: flex;
+            justify-content: space-between;
+        }
+        .footer {
+            bottom: 50px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 80vw;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div>
+            <h3>タスク名</h3>
+            <div class="input">
+                <ons-input id="taskname" modifier="underbar" placeholder="タスク名" class="input-taskname" float>
+                </ons-input>
+            </div>
+            <div class="choose-template">
+                <ons-button id="push-button">テンプレートから選ぶ</ons-button>
+            </div>
+        </div>
+        <div>
+            <h3>期日</h3>
+            <div class="input">
+                <ons-input id="year" modifier="underbar" placeholder="年" class="input-date"></ons-input>
+                <ons-input id="month" modifier="underbar" placeholder="月" class="input-date"></ons-input>
+                <ons-input id="day" modifier="underbar" placeholder="日" class="input-date"></ons-input>
+            </div>
+            <div class="button-time">
+                <ons-button id="push-button">時刻を入力する</ons-button>
+                <ons-button id="push-button">定期</ons-button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="save-template">
+            <ons-button id="push-button">テンプレートとして保存</ons-button>
+        </div>
+        <div class="button-apply">
+            <ons-button id="push-button">キャンセル</ons-button>
+            <ons-button id="push-button">作成</ons-button>
+        </div>
+    </div>
+</body>
+
+</html>
