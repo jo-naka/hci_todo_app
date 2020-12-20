@@ -36,7 +36,8 @@
       var password = document.getElementById('password').value;
 
       if (username === 'bob' && password === 'secret') {
-        ons.notification.alert('Congratulations!');
+        // ons.notification.alert('Congratulations!');
+        window.location.href = 'index.html';
       } else {
         ons.notification.alert('Incorrect username or password.');
       }
