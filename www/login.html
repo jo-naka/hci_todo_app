@@ -22,6 +22,7 @@
       var menu = document.getElementById('menu');
       menu.open();
     };
+    
     window.fn.load = function(page) {
       var content = document.getElementById('content');
       var menu = document.getElementById('menu');
@@ -30,64 +31,48 @@
         .then(menu.close.bind(menu));
     };
 
+    var login = function() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      if (username === 'bob' && password === 'secret') {
+        // ons.notification.alert('Congratulations!');
+        window.location.href = 'index.html';
+      } else {
+        ons.notification.alert('Incorrect username or password.');
+      }
+    };
+
     if (ons.platform.isIPhoneX()) {
       document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
       document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
-    }
+    };
+    
   </script>
 </head>
 <body>
-  <ons-splitter>
-    <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
-      <ons-page>
-        <ons-list>
-          <ons-list-item onclick="fn.load('home.html')" tappable>
-            Home
-          </ons-list-item>
-          <ons-list-item onclick="fn.load('task_view.html')" tappable>
-            タスク一覧
-          </ons-list-item>
-          <ons-list-item onclick="fn.load('about.html')" tappable>
-            About
-          </ons-list-item>
-        </ons-list>
-      </ons-page>
-    </ons-splitter-side>
-    <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
-  </ons-splitter>
-
-  <ons-template id="home.html">
-    <ons-page>
-      <ons-toolbar>
-        <div class="left">
-          <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="ion-ios-menu, material:md-menu"></ons-icon>
-          </ons-toolbar-button>
-        </div>
-        <div class="center">
-          Main
-        </div>
-      </ons-toolbar>
-      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-        Swipe right to open the menu!
-      </p>
-    </ons-page>
-  </ons-template>
-
-  <ons-template id="about.html">
   <ons-page>
     <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
-          <ons-icon icon="ion-ios-menu, material:md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
       <div class="center">
-        About
+        タスク管理アプリ
       </div>
     </ons-toolbar>
+    <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+      とりあえずログイン機能のみ（id='bob',pass='secret'でのみログイン可能）
+      サインアップは未実装
+    </p>
+    <div style="text-align: center; margin-top: 30px;">
+        <p>
+          <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+        </p>
+        <p>
+          <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+        </p>
+        <p style="margin-top: 30px;">
+          <ons-button onclick="login()">Log in</ons-button>
+          <ons-button onclick="signup()">Sign up</ons-button>
+        </p>
+    </div>
   </ons-page>
-  </ons-template>
-
 </body>
 </html>

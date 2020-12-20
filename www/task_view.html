@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task_editor</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- タイトル欄の表示内容 -->
+    <ons-page id="task_view">
+        <ons-toolbar>
+            <!-- ハンバーガーメニュー -->
+            <div class="left">
+                <ons-toolbar-button onclick="fn.open()">
+                    <ons-icon icon="ion-ios-menu, material:md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <!-- タイトル -->
+            <div class="center">
+                タスク一覧
+            </div>
+            <!-- ゴミ箱 -->
+            <div class="toolbar__right">
+                <span class="toolbar-button toolbar-button">
+                    <i class="zmdi zmdi-delete"></i>
+                </span>
+            </div>
+        </ons-toolbar>
+
+        <!-- タスク追加のフローティングボタン -->
+        <ons-fab position="bottom right">
+            <ons-icon icon="md-plus"></ons-icon>
+        </ons-fab>
+
+        <!-- タスク一覧のリスト -->
+        今日
+        <ul class="list">
+            <li class="list-item list-item--tappable">
+                <div class="list-item__right">
+                    <label class="checkbox">
+                        <input type="checkbox" id="checkbox1" class="checkbox__input" name="c">
+                        <div class="checkbox__checkmark"></div>
+                    </label>
+                </div>
+                Checkbox1
+            </li>
+        </ul>
+
+        7日以内
+        <ul class="list">
+            <li class="list-item list-item--tappable">
+                <div class="list-item__right">
+                    <label class="checkbox">
+                        <input type="checkbox" id="checkbox1" class="checkbox__input" name="c">
+                        <div class="checkbox__checkmark"></div>
+                    </label>
+                </div>
+                checkbox2
+            </li>
+        </ul>
+
+        今月
+        <ul class="list">
+            <li class="list-item list-item--tappable">
+                <div class="list-item__right">
+                    <label class="checkbox">
+                        <input type="checkbox" id="checkbox1" class="checkbox__input" name="c"">
+            <div class=" checkbox__checkmark">
+                </div>
+                </label>
+                </div>
+                Checkbox3
+            </li>
+        </ul>
+    </ons-page>
+</body>
+
+</html>
