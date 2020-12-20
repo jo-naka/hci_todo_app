@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task_editor</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- タイトル欄の表示内容 -->
+    <ons-page id="template_view">
+        <ons-toolbar>
+            <!-- ハンバーガーメニュー -->
+            <div class="left">
+                <ons-toolbar-button onclick="fn.open()">
+                    <ons-icon icon="ion-ios-menu, material:md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <!-- タイトル -->
+            <div class="center">
+                テンプレート一覧
+            </div>
+            <!-- ゴミ箱 -->
+            <div class="toolbar__right">
+                <span class="toolbar-button toolbar-button">
+                    <i class="zmdi zmdi-delete"></i>
+                </span>
+            </div>
+        </ons-toolbar>
+
+        <!-- タスク追加のフローティングボタン -->
+        <ons-fab position="bottom right">
+            <ons-icon icon="md-plus"></ons-icon>
+        </ons-fab>
+
+        <!-- タスク一覧のリスト -->
+        <ul class="list">
+            <li class="list-item list-item--tappable">
+                <div class="list-item__center">
+                template1
+                </div>
+            </li>
+        </ul>
+
+        <ul class="list">
+            <li class="list-item list-item--tappable">
+                <div class="list-item__center">
+                    template2
+                </div>
+            </li>
+        </ul>
+
+    </ons-page>
+</body>
+
+</html>
