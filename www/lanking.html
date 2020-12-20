@@ -3,39 +3,48 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1,0">
-        <title>タブバーの練習</title>
+        <title>ranking</title>
         <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
         <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
         <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     </head>
     <style>
-        lank{
-
-        }
+      rank{
+        font-size: 100px;
+      }
     </style>
     <body>
-        <template id="page1.html">
-            <ons-page id="page1">
-              <ons-toolbar>
-                <div class="center">Page 1</div>
-              </ons-toolbar>
-          
-              <p>This is the first page.</p>
-          
-              <ons-button id="push-button">Push page</ons-button>
-            </ons-page>
-          </template>
-          
-          <template id="page2.html">
-            <ons-page id="page2">
-              <ons-toolbar>
-                <div class="left"><ons-back-button>Page 1</ons-back-button></div>
-                <div class="center"></div>
-              </ons-toolbar>
-          
-              <p>This is the second page.</p>
-            </ons-page>
-          </template>
+      <ons-page>
+        <!--上部のボタン-->
+        <ons-toolbar>
+          <div class="left">
+            <ons-toolbar-button>
+              <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+          <div class="center">ランキング</div>
+        </ons-toolbar>
+      <!--中身-->
+        <section style="padding: 8px">
+          　　<p>あなたの順位　進行度</p>
+           No.100　　　10％
+          <p></p>
+          <ons-button modifier="large--quiet">large--quiet / material--flat</ons-button>
+          <p></p>
+          <ons-button modifier="large">境界線</ons-button>
+        </section>
+      
+        <section style="padding: 8px">
+          <p></p><br><br>
+          <ons-button modifier="quiet" disabled="true">quiet</ons-button>
+          <ons-button disabled="true">Default</ons-button>
+          <p></p>
+          <ons-button modifier="large--quiet" disabled="true">large--quiet / material--flat</ons-button>
+          <p></p>
+          <ons-button modifier="large" disabled="true">large</ons-button>
+        </section>
+      
+      </ons-page>
     </body>
 
 </html>
