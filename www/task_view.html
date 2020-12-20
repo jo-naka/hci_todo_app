@@ -1,0 +1,64 @@
+<ons-page id="task_view">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="ion-ios-menu, material:md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+            タスク一覧
+        </div>
+        <div class="toolbar__right">
+            <span class="toolbar-button toolbar-button">
+                <i class="zmdi zmdi-delete"></i>
+            </span>
+        </div>
+    </ons-toolbar>
+
+    <ons-fab position="bottom right">
+        <ons-icon icon="md-plus"></ons-icon>
+    </ons-fab>
+
+    <!-- ↓からタスク一覧のリスト -->
+    今日
+    <ul class="list">
+        <li class="list-item list-item--tappable">
+            <div class="list-item__right">
+                <label class="checkbox">
+                    <input type="checkbox" id="checkbox1" class="checkbox__input" name="c">
+                    <div class="checkbox__checkmark"></div>
+                </label>
+            </div>
+            Checkbox1
+        </li>
+    </ul>
+
+    7日以内
+    <ul class="list">
+        <li class="list-item list-item--tappable">
+            <div class="list-item__right">
+                <label class="checkbox">
+                    <input type="checkbox" id="checkbox1" class="checkbox__input" name="c">
+                    <div class="checkbox__checkmark"></div>
+                </label>
+            </div>
+            checkbox2
+        </li>
+    </ul>
+
+    今月
+    <ul class="list">
+        <li class="list-item list-item--tappable">
+            <div class="list-item__right">
+                <label class="checkbox">
+                    <input type="checkbox" id="checkbox1" class="checkbox__input" name="c"">
+        <div class=" checkbox__checkmark">
+            </div>
+            </label>
+            </div>
+            Checkbox3
+        </li>
+    </ul>
+
+
+</ons-page>
