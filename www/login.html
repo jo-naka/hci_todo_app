@@ -22,6 +22,7 @@
       var menu = document.getElementById('menu');
       menu.open();
     };
+    
     window.fn.load = function(page) {
       var content = document.getElementById('content');
       var menu = document.getElementById('menu');
@@ -30,22 +31,47 @@
         .then(menu.close.bind(menu));
     };
 
+    var login = function() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      if (username === 'bob' && password === 'secret') {
+        ons.notification.alert('Congratulations!');
+      } else {
+        ons.notification.alert('Incorrect username or password.');
+      }
+    };
+
     if (ons.platform.isIPhoneX()) {
       document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
       document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
-    }
+    };
+    
   </script>
 </head>
 <body>
   <ons-page>
     <ons-toolbar>
       <div class="center">
-        Login
+        タスク管理アプリ
       </div>
     </ons-toolbar>
     <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-      ログインしましょうねぇ～～～～
+      とりあえずログイン機能のみ（id='bob',pass='secret'でのみログイン可能）
+      サインアップは未実装
     </p>
+    <div style="text-align: center; margin-top: 30px;">
+        <p>
+          <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+        </p>
+        <p>
+          <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+        </p>
+        <p style="margin-top: 30px;">
+          <ons-button onclick="login()">Log in</ons-button>
+          <ons-button onclick="signup()">Sign up</ons-button>
+        </p>
+    </div>
   </ons-page>
 </body>
 </html>
