@@ -8,35 +8,101 @@
         <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
         <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     </head>
+    <script>
+      window.fn = {};
+
+window.fn.open = function() {
+  var menu = document.getElementById('menu');
+  menu.open();
+};
+
+window.fn.load = function(page) {
+  var content = document.getElementById('content');
+  var menu = document.getElementById('menu');
+  content.load(page)
+    .then(menu.close.bind(menu));
+};
+    </script>
     <style>
       rank{
         font-size: 1000px;
       }
     </style>
     <body>
-      <ons-page>
-        <!--上部のボタン-->
-        <ons-toolbar>
-          <div class="left">
-            <ons-toolbar-button>
-              <ons-icon icon="md-menu"></ons-icon>
-            </ons-toolbar-button>
-          </div>
-          <div class="center">ランキング</div>
-        </ons-toolbar>
-      <!--中身-->
-        <section style="padding: 30px">
-          　　<p style="rank">あなたの順位　　進行度</p>
-          <p> No.100　　　10％</p>
-          　　<p style="rank">ランキング順位　　名前　　　進行度</p>
-           <p>　　No.1　　　　　A　　　　　100%　100/100</p>
-           <p>　　No.2　　　　　B　　　　　90%　 　81/90</p>
-           <p>　　No.3　　　　　C　　　　　80%　 　64/80</p>
-           <p>　　No.4　　　　　D　　　　　70%　 　49/70</p>
-           <p>　　No.5　　　　　E　　　　　70%　 　42/60</p>
-          <p></p>
-        </section>
+      <ons-splitter>
+        <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+          <ons-page>
+            <!--メニューバー-->
+            <ons-list>
+              <ons-list-item onclick="fn.load('home.html')" tappable>
+                ランキング
+              </ons-list-item>
+              <ons-list-item onclick="fn.load('settings.html')" tappable>
+                Settings
+              </ons-list-item>
+              <ons-list-item onclick="fn.load('about.html')" tappable>
+                About
+              </ons-list-item>
+            </ons-list>
+          </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+      </ons-splitter>
       
+      <template id="home.html">
+        <ons-page>
+          <ons-toolbar>
+            <div class="left">
+              <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="md-menu"></ons-icon>
+              </ons-toolbar-button>
+            </div>
+            <!--上のバー-->
+            <div class="center">
+              ranking!
+            </div>
+          </ons-toolbar>
+          <!--下画面-->
+          <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+            　　<p style="rank">　　あなたの順位　　進行度</p>
+          <p> 　　No.100　　　　10％　1/10</p>
+          　　<p style="rank">　　ランキング順位　　名前　　　　　　進行度</p>
+           <p>　　　　No.1　　　　　A　　　　　100%　100/100</p>
+           <p>　　　　No.2　　　　　B　　　　　90%　 　81/90</p>
+           <p>　　　　No.3　　　　　C　　　　　80%　 　64/80</p>
+           <p>　　　　No.4　　　　　D　　　　　70%　 　49/70</p>
+           <p>　　　　No.5　　　　　E　　　　　70%　 　42/60</p>
+          </p>
+        </ons-page>
+      </template>
+      
+      <template id="settings.html">
+        <ons-page>
+          <ons-toolbar>
+            <div class="left">
+              <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="md-menu"></ons-icon>
+              </ons-toolbar-button>
+            </div>
+            <div class="center">
+              Settings
+            </div>
+          </ons-toolbar>
+        </ons-page>
+      </template>
+      
+      <template id="about.html">
+        <ons-page>
+          <ons-toolbar>
+            <div class="left">
+              <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="md-menu"></ons-icon>
+              </ons-toolbar-button>
+            </div>
+            <div class="center">
+              About
+            </div>
+          </ons-toolbar>
       </ons-page>
     </body>
 
