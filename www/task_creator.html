@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 
+    <script>
+
+    </script>
+
     <style>
         .main-container {
             margin: 50pt auto auto;
@@ -58,19 +62,21 @@
         <div>
             <h3>タスク名</h3>
             <div class="input">
-                <ons-input id="taskname" modifier="underbar" placeholder="タスク名" class="input-taskname" float>
-                </ons-input>
+                <ons-input id="taskname" modifier="underbar" placeholder="タスク名" class="input-taskname" float></ons-input>
             </div>
             <div class="choose-template">
-                <ons-button id="push-button">テンプレートから選ぶ</ons-button>
+                <ons-button id="push-button" onclick="location.href='template_view.html'">テンプレートから選ぶ</ons-button>
             </div>
         </div>
         <div>
             <h3>期日</h3>
             <div class="input">
-                <ons-input id="year" modifier="underbar" placeholder="年" class="input-date"></ons-input>
-                <ons-input id="month" modifier="underbar" placeholder="月" class="input-date"></ons-input>
-                <ons-input id="day" modifier="underbar" placeholder="日" class="input-date"></ons-input>
+                <!-- <ons-input id="year" modifier="underbar" placeholder="年" class="input-date"></ons-input> -->
+                <!-- <ons-input id="month" modifier="underbar" placeholder="月" class="input-date"></ons-input> -->
+                <!-- <ons-input id="day" modifier="underbar" placeholder="日" class="input-date"></ons-input> -->
+                
+                <!-- Safari，IEではきちんと動きません -->
+                <input type="date">
             </div>
             <div class="button-time">
                 <ons-button id="push-button">時刻を入力する</ons-button>
@@ -80,11 +86,11 @@
     </div>
     <div class="footer">
         <div class="save-template">
-            <ons-button id="push-button">テンプレートとして保存</ons-button>
+            <ons-button id="push-button" onclick="location.href='template_view.html'">テンプレートとして保存</ons-button>
         </div>
         <div class="button-apply">
-            <ons-button id="push-button">キャンセル</ons-button>
-            <ons-button id="push-button">作成</ons-button>
+            <ons-button id="push-button" onclick="location.href='task_view.html'">キャンセル</ons-button>
+            <ons-button id="push-button" onclick="location.href='task_view.html'">作成</ons-button>
         </div>
     </div>
 </body>

@@ -58,9 +58,12 @@
         <div>
             <h3>期日</h3>
             <div class="input">
-                <ons-input id="year" modifier="underbar" placeholder="年" class="input-date"></ons-input>
-                <ons-input id="month" modifier="underbar" placeholder="月" class="input-date"></ons-input>
-                <ons-input id="day" modifier="underbar" placeholder="日" class="input-date"></ons-input>
+                <!-- <ons-input id="year" modifier="underbar" placeholder="年" class="input-date"></ons-input> -->
+                <!-- <ons-input id="month" modifier="underbar" placeholder="月" class="input-date"></ons-input> -->
+                <!-- <ons-input id="day" modifier="underbar" placeholder="日" class="input-date"></ons-input> -->
+                
+                <!-- Safari，IEではきちんと動きません -->
+                <input type="date">
             </div>
             <div class="button-time">
                 <ons-button id="push-button">時刻を入力する</ons-button>
@@ -70,10 +73,11 @@
     </div>
     <div class="footer">
         <div class="button-apply">
-            <ons-button id="push-button">キャンセル</ons-button>
+            <ons-button id="push-button" onclick="location.href='task_view.html'">キャンセル</ons-button>
             <div>
                 <ons-button id="push-button">削除</ons-button>
-                <ons-button id="push-button">作成</ons-button>
+                <!-- ons-dialogで削除 -->
+                <ons-button id="push-button" onclick="location.href='task_view.html'">作成</ons-button>
             </div>
         </div>
     </div>
