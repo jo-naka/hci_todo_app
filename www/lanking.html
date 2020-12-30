@@ -34,14 +34,20 @@ window.fn.load = function(page) {
           <ons-page>
             <!--メニューバー-->
             <ons-list>
+              <ons-list-item onclick="location.href='index.html'" tappable><!--ここにURL-->
+                タスク一覧<!--ランキング-->
+              </ons-list-item>
+              <ons-list-item onclick="location.href='task_view.html'" tappable><!--ここにURL-->
+                タスク一覧<!--ランキング-->
+              </ons-list-item>
               <ons-list-item onclick="fn.load('home.html')" tappable>
-                ランキング
+                タスク分析ランキング
               </ons-list-item>
-              <ons-list-item onclick="fn.load('settings.html')" tappable>
-                Settings
+              <ons-list-item onclick="location.href='template_view.html'" tappable>
+                テンプレート
               </ons-list-item>
-              <ons-list-item onclick="fn.load('about.html')" tappable>
-                About
+              <ons-list-item onclick="location.href='login.html'" tappable>
+                ログアウト
               </ons-list-item>
             </ons-list>
           </ons-page>
