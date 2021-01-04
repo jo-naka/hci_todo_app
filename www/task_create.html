@@ -1,98 +1,33 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>task_creator</title>
-
-    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
-    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
-    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
-
-    <script>
-
-    </script>
-
-    <style>
-        .main-container {
-            margin: 50pt auto auto;
-            width: 80vw;
-            position: relative
-        }
-        .input {
-            margin: 10px;
-            display: flex;
-        }
-        .input-taskname {
-            width: 100%;
-        }
-        .input-date {
-            margin: 0px 5px;
-            width: 100%;
-        }
-        .choose-template {
-            text-align: right;
-        }
-        .save-template {
-            text-align: right;
-            margin-bottom: 10px;
-        }
-        .button-time {
-            display: flex;
-            justify-content: space-between;
-        }
-        .button-apply {
-            display: flex;
-            justify-content: space-between;
-        }
-        .footer {
-            bottom: 50px;
-            left: 0;
-            right: 0;
-            margin: auto;
-            width: 80vw;
-            position: absolute;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="main-container">
+<ons-page id="task_create">
+    <div style="margin: 50pt auto auto; width: 80vw; position: relative">
         <div>
             <h3>タスク名</h3>
-            <div class="input">
-                <ons-input id="taskname" modifier="underbar" placeholder="タスク名" class="input-taskname" float></ons-input>
+            <div style="margin: 10px; display: flex;">
+                <ons-input id="taskname" modifier="underbar" placeholder="タスク名" style="width: 100%;" float></ons-input>
             </div>
-            <div class="choose-template">
-                <ons-button id="push-button" onclick="location.href='template_view.html'">テンプレートから選ぶ</ons-button>
+            <div style="text-align: right;">
+                <ons-button id="push-button" onclick="fn.load(template_view.html)">テンプレートから選ぶ</ons-button>
             </div>
         </div>
         <div>
             <h3>期日</h3>
-            <div class="input">
-                <!-- <ons-input id="year" modifier="underbar" placeholder="年" class="input-date"></ons-input> -->
-                <!-- <ons-input id="month" modifier="underbar" placeholder="月" class="input-date"></ons-input> -->
-                <!-- <ons-input id="day" modifier="underbar" placeholder="日" class="input-date"></ons-input> -->
-                
+            <div style="margin: 10px; display: flex;">
                 <!-- Safari，IEではきちんと動きません -->
                 <input type="date">
             </div>
-            <div class="button-time">
+            <div style="display: flex; justify-content: space-between;">
                 <ons-button id="push-button">時刻を入力する</ons-button>
                 <ons-button id="push-button">定期</ons-button>
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="save-template">
-            <ons-button id="push-button" onclick="location.href='template_view.html'">テンプレートとして保存</ons-button>
+    <div style="bottom: 50px; left: 0; right: 0; margin: auto; width: 80vw; position: absolute;">
+        <div style="text-align: right; margin-bottom: 10px;">
+            <ons-button id="push-button" onclick="fn.load(template_view.html)">テンプレートとして保存</ons-button>
         </div>
-        <div class="button-apply">
-            <ons-button id="push-button" onclick="location.href='task_view.html'">キャンセル</ons-button>
-            <ons-button id="push-button" onclick="location.href='task_view.html'">作成</ons-button>
+        <div style="display: flex; justify-content: space-between;">
+            <ons-button id="push-button" onclick="fn.load(task_view.html)">キャンセル</ons-button>
+            <ons-button id="push-button" onclick="fn.load(task_view.html)">作成</ons-button>
         </div>
     </div>
-</body>
-
-</html>
+</ons-page>
