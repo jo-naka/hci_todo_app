@@ -83,7 +83,8 @@
             <ons-toolbar>
                 <!-- リスト一覧に戻るボタン -->
                 <div class="toolbar__left">
-                    <ons-back-button id="cancel_button"></ons-back-button>
+                    <!-- ons-back-buttonは勝手にpopPage()する -->
+                    <ons-back-button></ons-back-button>
                 </div>
             </ons-toolbar>
             <!-- 削決定のフローティングボタン -->
@@ -132,11 +133,6 @@
 
             //タスク削除画面
             if (page.id === '_listremove') {
-                // タスク一覧画面に戻る
-                page.querySelector('#cancel_button').onclick = function () {
-                    document.querySelector('#myNavigator').popPage();
-                };
-
                 page.querySelector('#remove_task_fab').onclick = function () {
                     document.querySelector('#myNavigator').popPage();
                 };
