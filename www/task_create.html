@@ -26,8 +26,24 @@
             <ons-button id="push-button" onclick="fn.load(template_view.html)">テンプレートとして保存</ons-button>
         </div>
         <div style="display: flex; justify-content: space-between;">
-            <ons-button id="push-button" onclick="fn.load(task_view.html)">キャンセル</ons-button>
-            <ons-button id="push-button" onclick="fn.load(task_view.html)">作成</ons-button>
+            <ons-button id="cancel_button">キャンセル</ons-button>
+            <ons-button id="create_task_button">作成</ons-button>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('init', function (event) {
+            var page = event.target;
+            if (page.id === 'task_create') {
+                //キャンセルボタンで一覧に戻る
+                page.querySelector('#cancel_button').onclick = function () {
+                    document.querySelector('#myNavigator').popPage();
+                };
+                //タスクを作成して一覧に戻る
+                page.querySelector('#create_task_button').onclick = function () {
+                    document.querySelector('#myNavigator').popPage();
+                };
+            }
+        });
+    </script>
 </ons-page>

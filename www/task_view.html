@@ -1,5 +1,7 @@
 <!-- タイトル欄の表示内容 -->
 <ons-page id="task_view">
+    <!-- ページ遷移のナビゲーター -->
+    <ons-navigator swipeable id="myNavigator" page="_listview.html"></ons-navigator>
 
     <ons-toolbar>
         <!-- ハンバーガーメニュー -->
@@ -12,62 +14,134 @@
         <div class="center">
             タスク一覧
         </div>
-        <!-- ゴミ箱 -->
-        <div class="toolbar__right">
-            <span class="toolbar-button toolbar-button">
-                <i class="zmdi zmdi-delete"></i>
-            </span>
-        </div>
     </ons-toolbar>
 
-    <!-- タスク追加のフローティングボタン -->
-    <ons-fab id="add_task_button" position="bottom right">
-        <ons-icon icon="md-plus"></ons-icon>
-    </ons-fab>
+    <!--タスク一覧リストのtemplate  -->
+    <template id="_listview.html">
+        <ons-page id="_listview">
+            <ons-toolbar>
+                <!-- ゴミ箱 -->
+                <div class="toolbar__right">
+                    <ons-toolbar-button id="remove_task_button">
+                        <i class="zmdi zmdi-delete"></i>
+                    </ons-toolbar-button>
 
-    <!-- タスク一覧のリスト -->
-    今日
-    <ul class="list">
-        <li class="list-item list-item--tappable">
-            <div class="list-item__right">
-                <label class="checkbox">
-                    <input type="checkbox" id="checkbox1" class="checkbox__input" name="c">
-                    <div class="checkbox__checkmark"></div>
-                </label>
-            </div>
-            Checkbox1
-        </li>
-    </ul>
+                </div>
+            </ons-toolbar>
+            <!-- タスク追加のフローティングボタン -->
+            <ons-fab id="add_task_fab" position="bottom right">
+                <ons-icon icon="md-plus"></ons-icon>
+            </ons-fab>
+            <!-- タスク一覧のリスト -->
+            今日
+            <ul class="list">
+                <li class="list-item list-item--tappable">
+                    <div class="list-item__right">
+                        <label class="checkbox">
+                            <input type="checkbox" id="checkbox1" class="checkbox__input" name="c">
+                            <div class="checkbox__checkmark"></div>
+                        </label>
+                    </div>
+                    Checkbox1
+                </li>
+            </ul>
 
-    7日以内
-    <ul class="list">
-        <li class="list-item list-item--tappable">
-            <div class="list-item__right">
-                <label class="checkbox">
-                    <input type="checkbox" id="checkbox1" class="checkbox__input" name="c">
-                    <div class="checkbox__checkmark"></div>
-                </label>
-            </div>
-            checkbox2
-        </li>
-    </ul>
+            7日以内
+            <ul class="list">
+                <li class="list-item list-item--tappable">
+                    <div class="list-item__right">
+                        <label class="checkbox">
+                            <input type="checkbox" id="checkbox1" class="checkbox__input" name="c">
+                            <div class="checkbox__checkmark"></div>
+                        </label>
+                    </div>
+                    checkbox2
+                </li>
+            </ul>
 
-    今月
-    <ul class="list">
-        <li class="list-item list-item--tappable">
-            <div class="list-item__right">
-                <label class="checkbox">
-                    <input type="checkbox" id="checkbox1" class="checkbox__input" name="c"">
-        <div class=" checkbox__checkmark">
-            </div>
-            </label>
-            </div>
-            Checkbox3
-        </li>
-    </ul>
+            今月
+            <ul class="list">
+                <li class="list-item list-item--tappable">
+                    <div class="list-item__right">
+                        <label class="checkbox">
+                            <input type="checkbox" id="checkbox1" class="checkbox__input" name="c"">
+            <div class=" checkbox__checkmark">
+                    </div>
+                    </label>
+                    </div>
+                    Checkbox3
+                </li>
+            </ul>
+        </ons-page>
+    </template>
+    <!-- リストtemplateここまで -->
+
+
+    <!-- 削除画面template -->
+    <template id="_listremove.html">
+        <ons-page id="_listremove">
+            <ons-toolbar>
+                <!-- リスト一覧に戻るボタン -->
+                <div class="toolbar__left">
+                    <ons-back-button id="cancel_button"></ons-back-button>
+                </div>
+            </ons-toolbar>
+            <!-- 削決定のフローティングボタン -->
+            <ons-fab id="remove_task_fab" position="bottom right">
+                <i class="zmdi zmdi-delete"></i>
+            </ons-fab>
+            <!-- タスク一覧のリスト -->
+            今日
+            <ul class="list">
+                <li class="list-item list-item--tappable">
+                    <div class="list-item__left">
+                        <label class="checkbox">
+                            <input type="checkbox" id="checkbox1" class="checkbox__input" name="c">
+                            <div class="checkbox__checkmark"></div>
+                        </label>
+                    </div>
+                    Checkbox1
+                </li>
+            </ul>
+
+            7日以内
+
+            今月
+
+        </ons-page>
+    </template>
+
 
     <!-- javascript -->
     <script>
+        document.addEventListener('init', function (event) {
+            var page = event.target;
 
+            //タスク一覧画面
+            if (page.id === '_listview') {
+                // タスク追加画面に飛ぶ
+                page.querySelector('#add_task_fab').onclick = function () {
+                    document.querySelector('#myNavigator').pushPage('task_create.html');
+                };
+                // タスク削除画面に飛ぶ
+                page.querySelector('#remove_task_button').onclick = function () {
+                    document.querySelector('#myNavigator').pushPage('_listremove.html');
+                };
+
+            }
+
+            //タスク削除画面
+            if (page.id === '_listremove') {
+                // タスク一覧画面に戻る
+                page.querySelector('#cancel_button').onclick = function () {
+                    document.querySelector('#myNavigator').popPage();
+                };
+
+                page.querySelector('#remove_task_fab').onclick = function () {
+                    document.querySelector('#myNavigator').popPage();
+                };
+
+            }
+        });
     </script>
 </ons-page>
