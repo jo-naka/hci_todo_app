@@ -6,7 +6,7 @@
                 <ons-input id="taskname" modifier="underbar" placeholder="タスク名" style="width: 100%;" float></ons-input>
             </div>
             <div style="text-align: right;">
-                <ons-button id="push-button" onclick="fn.load(template_view.html)">テンプレートから選ぶ</ons-button>
+                <ons-button id="select_template_button">テンプレートから選ぶ</ons-button>
             </div>
         </div>
         <div>
@@ -43,6 +43,11 @@
                 page.querySelector('#create_task_button').onclick = function () {
                     document.querySelector('#myNavigator').popPage();
                 };
+                // タスクテンプレート画面に飛ぶ
+                page.querySelector('#select_template_button').onclick = function () {
+                    document.querySelector('#myNavigator').pushPage('template_select.html');
+                };
+
             }
         });
     </script>
