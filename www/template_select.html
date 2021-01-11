@@ -1,0 +1,38 @@
+<!-- task_createから飛んでくるテンプレート画面 -->
+<ons-page id="template_select">
+    <!-- タイトル欄の表示内容 -->
+    <ons-toolbar>
+        <!-- 戻るボタン -->
+        <div class="toolbar__left">
+            <ons-back-button id="cancel_button"></ons-back-button>
+        </div>
+        <!-- タイトル -->
+        <div class="center">
+            テンプレート一覧
+        </div>
+    </ons-toolbar>
+
+    <!-- テンプレート一覧のリスト -->
+    <ul class="list">
+        <li class="list-item list-item--tappable">
+            <div class="list-item__center">
+                template1
+            </div>
+        </li>
+        <li class="list-item list-item--tappable">
+            <div class="list-item__center">
+                template2
+            </div>
+        </li>
+    </ul>
+
+    <script>
+        document.addEventListener('init', function (event) {
+            var page = event.target;
+            if (page.id === 'template_select') {
+                //テンプレートを選択して戻る
+            }
+        });
+    </script>
+
+</ons-page>
