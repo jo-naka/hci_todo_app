@@ -1,0 +1,79 @@
+<ons-page id="task_create">
+    <div style="margin: 50pt auto auto; width: 80vw; position: relative">
+        <div>
+            <h3>タスク名</h3>
+            <div style="margin: 10px; display: flex;">
+                <ons-input id="taskname" modifier="underbar" placeholder="タスク名" style="width: 100%;" float></ons-input>
+            </div>
+            <div style="text-align: right;">
+                <ons-button id="select_template_button">テンプレートから選ぶ</ons-button>
+            </div>
+        </div>
+        <div>
+            <h3>期日</h3>
+            <div style="margin: 10px; display: flex;">
+                <!-- Safari，IEではきちんと動きません -->
+                <input id="date" type="date">
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <ons-button id="push-button">時刻を入力する</ons-button>
+                <ons-button id="push-button">定期</ons-button>
+            </div>
+        </div>
+    </div>
+    <div style="bottom: 50px; left: 0; right: 0; margin: auto; width: 80vw; position: absolute;">
+        <div style="text-align: right; margin-bottom: 10px;">
+            <ons-button id="push-button" onclick="fn.load(template_view.html)">テンプレートとして保存</ons-button>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <ons-button id="cancel_button">キャンセル</ons-button>
+            <ons-button id="create_task_button">作成</ons-button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('init', function (event) {
+            var page = event.target;
+            if (page.id === 'task_create') {
+                //キャンセルボタンで一覧に戻る
+                page.querySelector('#cancel_button').onclick = function () {
+                    document.querySelector('#myNavigator').popPage();
+                };
+                //タスクを作成して一覧に戻る
+                page.querySelector('#create_task_button').onclick = function () {
+                    var taskname = page.querySelector('#taskname').value;
+                    var date = page.querySelector('#date').value;
+                    document.querySelector('#myNavigator').popPage();
+                    add_task(taskname, date);
+                };
+                // タスクテンプレート画面に飛ぶ
+                page.querySelector('#select_template_button').onclick = function () {
+                    document.querySelector('#myNavigator').pushPage('template_select.html');
+                };
+
+            }
+        });
+
+        // ローカルストレージの内容を読み込む
+        function get_tasks() {
+            var tasks_json = localStorage.getItem('task');
+            var tasks = [];
+            if (tasks_json != null) tasks = JSON.parse(tasks_json);
+            // console.log(tasks[0].taskname);
+            // console.log(tasks[0].date);
+            return tasks;
+        }
+
+        // タスク情報をローカルストレージに追加
+        function add_task(taskname, date) {
+            var tasks = get_tasks();
+            var task_data = {
+                'taskname': taskname,
+                'date': date,
+            };
+            tasks.unshift(task_data);
+            var new_tasks_json = JSON.stringify(tasks);
+            localStorage.setItem('todo', new_tasks_json);
+        }
+    </script>
+</ons-page>

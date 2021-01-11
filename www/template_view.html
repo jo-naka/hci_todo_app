@@ -1,65 +1,112 @@
-<!DOCTYPE html>
-<html lang="ja">
+<!-- タイトル欄の表示内容 -->
+<ons-page id="template_view">
+    <!-- ページ遷移のナビゲーター -->
+    <ons-navigator swipeable id="myNavigator" page="_listview.html"></ons-navigator>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>task_editor</title>
+    <ons-toolbar>
+        <!-- ハンバーガーメニュー -->
+        <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="ion-ios-menu, material:md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <!-- タイトル -->
+        <div class="center">
+            テンプレート一覧
+        </div>
+    </ons-toolbar>
 
-    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
-    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
-    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+    <!--テンプレート一覧リストのtemplate  -->
+    <template id="_listview.html">
+        <ons-page id="_listview">
+            <ons-toolbar>
+                <!-- ゴミ箱 -->
+                <div class="toolbar__right">
+                    <ons-toolbar-button id="remove_template_button">
+                        <i class="zmdi zmdi-delete"></i>
+                    </ons-toolbar-button>
 
-    <style>
-
-    </style>
-</head>
-
-<body>
-    <!-- タイトル欄の表示内容 -->
-    <ons-page id="template_view">
-        <ons-toolbar>
-            <!-- ハンバーガーメニュー -->
-            <div class="left">
-                <ons-toolbar-button onclick="fn.open()">
-                    <ons-icon icon="ion-ios-menu, material:md-menu"></ons-icon>
-                </ons-toolbar-button>
-            </div>
-            <!-- タイトル -->
-            <div class="center">
-                テンプレート一覧
-            </div>
-            <!-- ゴミ箱 -->
-            <div class="toolbar__right">
-                <span class="toolbar-button toolbar-button">
-                    <i class="zmdi zmdi-delete"></i>
-                </span>
-            </div>
-        </ons-toolbar>
-
-        <!-- タスク追加のフローティングボタン -->
-        <ons-fab position="bottom right">
-            <ons-icon icon="md-plus"></ons-icon>
-        </ons-fab>
-
-        <!-- タスク一覧のリスト -->
-        <ul class="list">
-            <li class="list-item list-item--tappable">
-                <div class="list-item__center">
-                template1
                 </div>
-            </li>
-        </ul>
+            </ons-toolbar>
+            <!-- テンプレート追加のフローティングボタン -->
+            <ons-fab id="add_template_fab" position="bottom right">
+                <ons-icon icon="md-plus"></ons-icon>
+            </ons-fab>
 
-        <ul class="list">
-            <li class="list-item list-item--tappable">
-                <div class="list-item__center">
-                    template2
+            <!-- テンプレート一覧のリスト -->
+            <ul class="list">
+                <li class="list-item list-item--tappable">
+                    <div class="list-item__center">
+                        template1
+                    </div>
+                </li>
+                <li class="list-item list-item--tappable">
+                    <div class="list-item__center">
+                        template2
+                    </div>
+                </li>
+            </ul>
+        </ons-page>
+    </template>
+    <!-- リストtemplateここまで -->
+
+    <!-- 削除画面template -->
+    <template id="_listremove.html">
+        <ons-page id="_listremove">
+            <ons-toolbar>
+                <!-- リスト一覧に戻るボタン -->
+                <div class="toolbar__left">
+                    <!-- ons-back-buttonは勝手にpopPage()する -->
+                    <ons-back-button></ons-back-button>
                 </div>
-            </li>
-        </ul>
+            </ons-toolbar>
+            <!-- 削決定のフローティングボタン -->
+            <ons-fab id="remove_template_fab" position="bottom right">
+                <i class="zmdi zmdi-delete"></i>
+            </ons-fab>
+            <!-- テンプレート一覧のリスト -->
+            <ul class="list">
+                <li class="list-item list-item--tappable">
+                    <div class="list-item__center">
+                        template1
+                    </div>
+                </li>
+                <li class="list-item list-item--tappable">
+                    <div class="list-item__center">
+                        template2
+                    </div>
+                </li>
+            </ul>
+        </ons-page>
+    </template>
 
-    </ons-page>
-</body>
 
-</html>
+    <!-- javascript -->
+    <script>
+        document.addEventListener('init', function (event) {
+        var page = event.target;
+
+        //タスク一覧画面
+        if (page.id === '_listview') {
+            // タスク追加画面に飛ぶ
+            page.querySelector('#add_template_fab').onclick = function () {
+                document.querySelector('#myNavigator').pushPage('task_create.html');
+            };
+            // タスク削除画面に飛ぶ
+            page.querySelector('#remove_template_button').onclick = function () {
+                document.querySelector('#myNavigator').pushPage('_listremove.html');
+            };
+
+        }
+
+        //タスク削除画面
+        if (page.id === '_listremove') {
+            page.querySelector('#remove_task_fab').onclick = function () {
+                document.querySelector('#myNavigator').popPage();
+            };
+
+        }
+    });
+</script>
+
+</ons-page>
