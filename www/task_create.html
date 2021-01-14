@@ -1,5 +1,10 @@
 <ons-page id="task_create">
-    <div style="margin: 50pt auto auto; width: 80vw; position: relative">
+    <ons-toolbar>
+        <div class="left"><ons-back-button></ons-back-button></div>
+        <div class="center">新規タスクの追加</div>
+    </ons-toolbar>
+
+    <div style="margin: 40pt auto auto; width: 80vw; position: relative">
         <div>
             <h3>タスク名</h3>
             <div style="margin: 10px; display: flex;">
@@ -22,11 +27,8 @@
         </div>
     </div>
     <div style="bottom: 50px; left: 0; right: 0; margin: auto; width: 80vw; position: absolute;">
-        <div style="text-align: right; margin-bottom: 10px;">
-            <ons-button id="push-button" onclick="fn.load(template_view.html)">テンプレートとして保存</ons-button>
-        </div>
         <div style="display: flex; justify-content: space-between;">
-            <ons-button id="cancel_button">キャンセル</ons-button>
+            <ons-button id="push-button" onclick="fn.load(template_view.html)">テンプレートとして保存</ons-button>
             <ons-button id="create_task_button">作成</ons-button>
         </div>
     </div>
