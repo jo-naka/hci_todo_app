@@ -18,6 +18,7 @@ function add_task(taskname, date) {
     tasks.unshift(task_data);
     var new_tasks_json = JSON.stringify(tasks);
     localStorage.setItem('task', new_tasks_json);
+    display_task();
 }
 
 // ローカルストレージのタスクリストを表示する
