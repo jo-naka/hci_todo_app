@@ -34,18 +34,7 @@
             </ons-fab>
 
             <!-- テンプレート一覧のリスト -->
-            <ul class="list">
-                <li class="list-item list-item--tappable">
-                    <div class="list-item__center">
-                        template1
-                    </div>
-                </li>
-                <li class="list-item list-item--tappable">
-                    <div class="list-item__center">
-                        template2
-                    </div>
-                </li>
-            </ul>
+            <ons-list id="template_list"></ons-list>
         </ons-page>
     </template>
     <!-- リストtemplateここまで -->
@@ -65,18 +54,7 @@
                 <i class="zmdi zmdi-delete"></i>
             </ons-fab>
             <!-- テンプレート一覧のリスト -->
-            <ul class="list">
-                <li class="list-item list-item--tappable">
-                    <div class="list-item__center">
-                        template1
-                    </div>
-                </li>
-                <li class="list-item list-item--tappable">
-                    <div class="list-item__center">
-                        template2
-                    </div>
-                </li>
-            </ul>
+            <ons-list id="template_list"></ons-list>
         </ons-page>
     </template>
 
@@ -88,6 +66,8 @@
 
         //タスク一覧画面
         if (page.id === '_listview') {
+            display_template();
+
             // タスク追加画面に飛ぶ
             page.querySelector('#add_template_fab').onclick = function () {
                 document.querySelector('#myNavigator').pushPage('task_create.html');

@@ -13,23 +13,13 @@
     </ons-toolbar>
 
     <!-- テンプレート一覧のリスト -->
-    <ul class="list">
-        <li class="list-item list-item--tappable">
-            <div class="list-item__center">
-                template1
-            </div>
-        </li>
-        <li class="list-item list-item--tappable">
-            <div class="list-item__center">
-                template2
-            </div>
-        </li>
-    </ul>
+    <ons-list id="template_list"></ons-list>
 
     <script>
         document.addEventListener('init', function (event) {
             var page = event.target;
             if (page.id === 'template_select') {
+                display_template();
                 //テンプレートを選択して戻る
             }
         });
