@@ -3,8 +3,6 @@ function get_tasks() {
     var tasks_json = localStorage.getItem('task');
     var tasks = [];
     if (tasks_json != null) tasks = JSON.parse(tasks_json);
-    // console.log(tasks[0].taskname);
-    // console.log(tasks[0].date);
     return tasks;
 }
 
@@ -28,34 +26,42 @@ function display_task() {
     list.innerHTML = '';    // 表示内容をクリア
 
     for (var n = 0; n < tasks.length; n++) {
-        // ここから HTMLを直接記述
+        // ここからHTMLを動的に記述
+        // 一つのタスク情報を表示するlistitemの定義
         var listitem = document.createElement('ons-list-item');
         listitem.setAttribute('modifier', 'tappable');
 
-        var left_div = document.createElement('div');
+        // 以下，listitem内の要素
+        // タスク情報(タスク名，期日)の表示を包括するwrapper
         var center_div = document.createElement('div');
-        left_div.className = 'left';
         center_div.className = 'center';
 
-        var result = document.createElement('ons-checkbox');
-        var title_span = document.createElement('span');
-        var sub_span = document.createElement('span');
+        // チェックボックスの表示を包括するwrapper
+        var right_div = document.createElement('div');
+        right_div.className = 'right';
 
-        result.num = n;
-        result.checked = 0; //tasks[n].result;
+        // タスク名を取得して表示
+        var title_span = document.createElement('span');
         title_span.className = 'list-item__title';
         title_span.innerHTML = tasks[n].taskname;
+
+        // 期日を取得して表示
+        var sub_span = document.createElement('span');
         sub_span.className = 'list-item__subtitle';
         sub_span.innerHTML = tasks[n].date;
         // sub_span.innerHTML = moment(tasks[n].date).format('LLL');
 
-        left_div.appendChild(result);
+        // チェックボックスを表示(テスト段階でチェックなし確定表示)
+        var result = document.createElement('ons-checkbox');
+        result.num = n;
+        result.checked = 0; //tasks[n].result;
+
+        // 各要素を親子定義
         center_div.appendChild(title_span);
         center_div.appendChild(sub_span);
-        center_div.taskname = tasks[n].taskname;  // 詳細ページで表示するタイトル
-        center_div.num = n; // todo キーの何番目の項目か
-        listitem.appendChild(left_div);
+        right_div.appendChild(result);
         listitem.appendChild(center_div);
+        listitem.appendChild(right_div);
         list.appendChild(listitem);
     }
     var rows = document.querySelector('#task_list').querySelectorAll('ons-list-item');
