@@ -12,6 +12,26 @@
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
   <link rel="stylesheet" href="css/style.css">
 
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+  https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBJJeojDkkpoEYkv8gsNN5SBFI23JqI6Mo",
+      authDomain: "todo-manage-79493.firebaseapp.com",
+      projectId: "todo-manage-79493",
+      storageBucket: "todo-manage-79493.appspot.com",
+      messagingSenderId: "362635062589",
+      appId: "1:362635062589:web:ec45e6d73424b661a42954"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
   <script>
     ons.ready(function() {
       console.log("Onsen UI is ready!");
