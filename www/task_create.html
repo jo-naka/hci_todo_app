@@ -28,7 +28,7 @@
     </div>
     <div style="bottom: 50px; left: 0; right: 0; margin: auto; width: 80vw; position: absolute;">
         <div style="display: flex; justify-content: space-between;">
-            <ons-button id="push-button" onclick="fn.load(template_view.html)">テンプレートとして保存</ons-button>
+            <ons-button id="create_template_button" onclick="fn.load(template_view.html)">テンプレートとして保存</ons-button>
             <ons-button id="create_task_button">作成</ons-button>
         </div>
     </div>
@@ -37,10 +37,6 @@
         document.addEventListener('init', function (event) {
             var page = event.target;
             if (page.id === 'task_create') {
-                //キャンセルボタンで一覧に戻る
-                page.querySelector('#cancel_button').onclick = function () {
-                    document.querySelector('#myNavigator').popPage();
-                };
                 //タスクを作成して一覧に戻る
                 page.querySelector('#create_task_button').onclick = function () {
                     var taskname = page.querySelector('#taskname').value;
@@ -52,11 +48,15 @@
                 page.querySelector('#select_template_button').onclick = function () {
                     document.querySelector('#myNavigator').pushPage('template_select.html');
                 };
-
+                // タスクテンプレートを保存
+                page.querySelector('#create_template_button').onclick = function () {
+                    var taskname = page.querySelector('#taskname').value;
+                    add_template(taskname);
+                };
             }
         });
 
-        // ローカルストレージの内容を読み込む
+        // ローカルストレージのタスク情報を読み込む
         function get_tasks() {
             var tasks_json = localStorage.getItem('task');
             var tasks = [];
@@ -76,6 +76,26 @@
             tasks.unshift(task_data);
             var new_tasks_json = JSON.stringify(tasks);
             localStorage.setItem('task', new_tasks_json);
+        }
+
+        // ローカルストレージのテンプレート情報を読み込む
+        function get_templates() {
+            var templates_json = localStorage.getItem('template');
+            var templates = [];
+            if (templates_json != null) templates = JSON.parse(templates_json);
+            // console.log(templates[0].taskname);
+            return templates;
+        }
+
+        // テンプレート情報をローカルストレージに追加
+        function add_template(taskname) {
+            var templates = get_templates();
+            var template_data = {
+                'taskname': taskname,
+            };
+            templates.unshift(template_data);
+            var new_templates_json = JSON.stringify(templates);
+            localStorage.setItem('template', new_templates_json);
         }
     </script>
 </ons-page>
