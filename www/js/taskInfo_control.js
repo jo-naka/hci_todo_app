@@ -13,10 +13,23 @@ function add_task(taskname, date) {
         'taskname': taskname,
         'date': date,
     };
-    tasks.unshift(task_data);
+    //日付順に挿入
+    if (!date) {
+        //日付なしなら末尾に
+        tasks.push(task_data);
+    } else {
+        //日付ありなら昇順
+        for (let i in tasks) {
+            if (tasks[i].date > date || !date) {
+                //自分より大きい日付が見つかるor日付なしが見つかるならその1つ上に
+                tasks.splice(i - 1, 0, task_data);
+                break;
+            }
+        }
+    }
     var new_tasks_json = JSON.stringify(tasks);
     localStorage.setItem('task', new_tasks_json);
-    display_task();
+    display_task('#task_list');
 }
 
 // ローカルストレージのタスクリストを表示する
