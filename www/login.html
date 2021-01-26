@@ -6,32 +6,14 @@
   <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script src="js/firebase_init.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/signup.js"></script>
 
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
   <link rel="stylesheet" href="css/style.css">
-
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-  https://firebase.google.com/docs/web/setup#available-libraries -->
-
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyBJJeojDkkpoEYkv8gsNN5SBFI23JqI6Mo",
-      authDomain: "todo-manage-79493.firebaseapp.com",
-      projectId: "todo-manage-79493",
-      storageBucket: "todo-manage-79493.appspot.com",
-      messagingSenderId: "362635062589",
-      appId: "1:362635062589:web:ec45e6d73424b661a42954"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
-
   <script>
     ons.ready(function() {
       console.log("Onsen UI is ready!");
@@ -52,7 +34,7 @@
     };
 
     var login = function() {
-      var username = document.getElementById('username').value;
+      var username = document.getElementById('email').value;
       var password = document.getElementById('password').value;
 
       if (username === 'bob' && password === 'secret') {
@@ -78,12 +60,12 @@
       </div>
     </ons-toolbar>
     <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-      とりあえずログイン機能のみ（id='bob',pass='secret'でのみログイン可能）
+      とりあえずログイン機能のみ（mail='bob',pass='secret'でのみログイン可能）
       サインアップは未実装
     </p>
     <div style="text-align: center; margin-top: 30px;">
         <p>
-          <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+          <ons-input id="email" modifier="underbar" placeholder="example@example.com" float></ons-input>
         </p>
         <p>
           <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
