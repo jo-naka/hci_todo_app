@@ -1,11 +1,23 @@
+# 最終的にmonacaは使わなくなるので当然無視
 /.monaca/*
 !/.monaca/project_info.json
-/platforms
+#実機デバッグ関連なので無視
+/platforms/
+# macで作成されるディレクトリ情報ファイル(?)．まったくいらない
 .DS_Store
+# バックアップファイルとかによく使われる拡張子
 *.swp
+# vscodeの設定ファイル
 .vscode/
+# .vscodeから読んできてるので無視でもいい？
 typings/
-node_modules
+# cordovaアプリのデバッグに必要なだけ
+node_modules/
+# 不明，実機名のフォルダがあるからデバッグ時のみ？
 plugins/
+# cordovaデバッグ時のやつ
 package-lock.json
 package.json
+# firebaseの設定ファイル
+.firebaserc
+firebase.json
